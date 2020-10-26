@@ -79,7 +79,7 @@ namespace PSWikiTable
             return rowCount;
         }
 
-        private bool IsWikiLink(Uri link, Uri baseUri)
+        private bool IsInternalWikiLink(Uri link, Uri baseUri)
         {
             return link.AbsolutePath.IEquals(baseUri.AbsolutePath)
                 && link.Host.IEquals(baseUri.Host);
@@ -139,8 +139,7 @@ namespace PSWikiTable
                 if (cell.Hyperlink != null)
                 {
                     string urlEncodedValue = HttpUtility.UrlEncode(cellValue);
-                    // Internal Wiki link?
-                    if (settings.WikiBaseUri != null && IsWikiLink(cell.Hyperlink, settings.WikiBaseUri))
+                    if (settings.WikiBaseUri != null && IsInternalWikiLink(cell.Hyperlink, settings.WikiBaseUri))
                     {
                         string title = GetWikiTitle(cell.Hyperlink);
                         if (title.IEquals(cellValue) || title.IEquals(urlEncodedValue))
