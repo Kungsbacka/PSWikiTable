@@ -50,7 +50,11 @@ ConvertTo-WikiTable -Path .\MyTable.xlsx -Templates @{yes = 'Yes'; no = 'No'; wa
 
 ## Build
 
-Build one of the compile target projects depending on what PowerShell version you are targeting. The cmdlet is built with .NET Standard using PowerShell Standard Library, but it depends on [EPPlus](https://github.com/EPPlusSoftware/EPPlus) which is not built on .NET Standard.
+The project is multitarget and builds .NET Framework 4.72 and NET 5.0 assemblies. The former is for use with PowerShell 5 and the later for PowerShell 7.
+
+```powershell
+dotnet build -c=Release
+```
 
 ## Install
 
@@ -58,7 +62,7 @@ Create a new folder named "PSWikiTable" where you keep your modules (i.g. %USERP
 
 Import the module manually if it's not in one of the module auto-load locations ``Import-Module 'C:\MyModules\PSWikiTable'``.
 
-## ToDo
+## Todo
 
 Things that may or may not happen in the future:
 
