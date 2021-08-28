@@ -186,6 +186,8 @@ namespace PSWikiTable
                     }
                     else
                     {
+                        // Add a space before the value as to not inadvertently create wikitext markup (|+ for example)
+                        data.Append(' ');
                         data.Append(cellValue);
                     }
                 }
